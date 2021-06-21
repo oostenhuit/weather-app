@@ -26,6 +26,7 @@ let now = new Date();
 timeset.innerHTML = formatDate(now);
 
 function showTemperature(response) {
+  console.log(response);
   document.querySelector("h1").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
@@ -42,6 +43,9 @@ function showTemperature(response) {
   document.querySelector("#min-temp").innerHTML = Math.round(
     response.data.main.temp_min
   );
+  let iconChange = document.getElementById("icon");
+  iconChange.setAttribute(`src`, `images/${response.data.weather[0].icon}.svg`);
+  iconChange.setAttribute(`alt`, `${response.data.weather[0].description}`);
 }
 function showCity(city) {
   let apiKey = "a7de365924edf156fe268686a1a61738";

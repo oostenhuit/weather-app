@@ -83,10 +83,9 @@ button {
   top: -29px;
   font-size: 20px;
 }
-.today-picture {
-  display: block;
-  margin: 0 auto;
-  color: #f2f809;
+.icon {
+  width: 144px;
+  height: 144px;
 }
 
 .weekday {
