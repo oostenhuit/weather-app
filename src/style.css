@@ -68,25 +68,19 @@ button {
   padding: 0px;
   text-align: left;
 }
-.cel-fahr-ul {
-  list-style: none;
+.celsius {
   position: relative;
   top: 27px;
   left: -6px;
   padding: 0px;
   font-size: 23px;
   line-height: 1.3;
+  font-weight: 500;
 }
-.cel-fahr-links {
-  text-decoration: none;
-  color: black;
-}
-.cel-fahr-links:hover {
-  color: rgba(0, 0, 0, 0.7);
-}
+
 .max-min-temp-today {
   position: relative;
-  top: -20px;
+  top: -29px;
   font-size: 20px;
 }
 .today-picture {
