@@ -40,8 +40,9 @@ button {
   padding: 16px;
 }
 .search-button {
+  padding: 0px;
   position: relative;
-  left: 133px;
+  left: 128px;
   top: -31px;
 }
 .location-search {
@@ -51,7 +52,6 @@ button {
   color: rgb(39, 38, 38);
 }
 .location-search:hover {
-  color: rgba(0, 0, 0, 0.7);
   transition: all 200ms ease-in-out;
 }
 
@@ -79,7 +79,7 @@ button {
   top: -29px;
   font-size: 20px;
 }
-.icon {
+.main-weather-icon {
   width: 144px;
   height: 144px;
 }
