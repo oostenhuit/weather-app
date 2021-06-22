@@ -25,6 +25,13 @@ let timeset = document.querySelector(".date-time");
 let now = new Date();
 timeset.innerHTML = formatDate(now);
 
+function changeIconName(name, alt) {
+  let newIconName = name.slice(0, 2);
+  let iconChange = document.getElementById("icon");
+  iconChange.setAttribute(`src`, `images/${newIconName}.svg`);
+  iconChange.setAttribute(`alt`, `${alt}`);
+}
+
 function showTemperature(response) {
   document.querySelector("h1").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
@@ -42,11 +49,11 @@ function showTemperature(response) {
   document.querySelector("#min-temp").innerHTML = Math.round(
     response.data.main.temp_min
   );
-  let iconChange = document.getElementById("icon");
-  iconChange.setAttribute(`src`, `images/${response.data.weather[0].icon}.svg`);
-  iconChange.setAttribute(`alt`, `${response.data.weather[0].description}`);
-  console.log(response.data.weather[0].icon);
+  let iconName = response.data.weather[0].icon;
+  let iconAlt = response.data.weather[0].description;
+  changeIconName(iconName, iconAlt);
 }
+
 function showCity(city) {
   let apiKey = "a7de365924edf156fe268686a1a61738";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
