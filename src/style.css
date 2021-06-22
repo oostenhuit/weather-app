@@ -54,12 +54,7 @@ button {
   color: rgba(0, 0, 0, 0.7);
   transition: all 200ms ease-in-out;
 }
-.date-time {
-  margin: 0px;
-  font-size: 12px;
-  position: relative;
-  top: -6px;
-}
+
 .climate {
   font-size: 13px;
   list-style: none;

@@ -1,4 +1,5 @@
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp * 1000);
   let weekday = date.getDay();
   let weekdays = [
     "Sunday",
@@ -18,12 +19,10 @@ function formatDate(date) {
     minutes = `0${minutes}`;
   }
   let day = weekdays[weekday];
-
-  return `${day} ${hour}:${minutes}`;
+  document.querySelector(
+    "#update-time"
+  ).innerHTML = `${day} ${hour}:${minutes}`;
 }
-let timeset = document.querySelector(".date-time");
-let now = new Date();
-timeset.innerHTML = formatDate(now);
 
 function changeIconName(name, alt) {
   let newIconName = name.slice(0, 2);
@@ -38,6 +37,7 @@ function showTemperature(response) {
     response.data.main.temp
   );
   document.querySelector("h3").innerHTML = response.data.weather[0].description;
+
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
 
   document.querySelector("#wind-speed").innerHTML = Math.round(
@@ -52,6 +52,7 @@ function showTemperature(response) {
   let iconName = response.data.weather[0].icon;
   let iconAlt = response.data.weather[0].description;
   changeIconName(iconName, iconAlt);
+  formatDate(response.data.dt);
 }
 
 function showCity(city) {
