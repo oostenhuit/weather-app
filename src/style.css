@@ -97,10 +97,14 @@ button {
   margin: 0px;
   position: relative;
   top: -105px;
-  line-height: 30px;
+  line-height: 18px;
 }
 .frame {
   max-width: 70%;
+}
+.icon-forecast {
+  width: 54px;
+  height: 54px;
 }
 .endnote {
   font-size: 12px;

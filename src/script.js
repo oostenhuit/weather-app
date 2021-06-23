@@ -23,12 +23,33 @@ function formatDate(timestamp) {
     "#update-time"
   ).innerHTML = `${day} ${hour}:${minutes}`;
 }
+function showForecast(response) {
+  console.log(response);
+  document.querySelector("#forecast-max-temp").innerHTML = Math.round(
+    response.data.daily[1].temp.max
+  );
+  document.querySelector("#forecast-min-temp").innerHTML = Math.round(
+    response.data.daily[1].temp.min
+  );
+  let iconNameForecast = response.data.daily[1].weather[0].icon;
+  let iconNameAlt = response.data.daily[1].weather[0].icon;
+  changeIconName(iconNameForecast, iconNameAlt);
+}
 
+function callForecastURL(lat, lon) {
+  let apiKey = "a7de365924edf156fe268686a1a61738";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(showForecast);
+}
 function changeIconName(name, alt) {
   let newIconName = name.slice(0, 2);
   let iconChange = document.getElementById("icon");
   iconChange.setAttribute(`src`, `images/${newIconName}.svg`);
   iconChange.setAttribute(`alt`, `${alt}`);
+  let iconChangeForecast = document.getElementById("icon-forecast");
+  iconChangeForecast.setAttribute(`src`, `images/${newIconName}.svg`);
+  iconChangeForecast.setAttribute(`alt`, `${alt}`);
 }
 
 function showTemperature(response) {
@@ -51,8 +72,11 @@ function showTemperature(response) {
   );
   let iconName = response.data.weather[0].icon;
   let iconAlt = response.data.weather[0].description;
+  let latitude = response.data.coord.lat;
+  let longitude = response.data.coord.lon;
   changeIconName(iconName, iconAlt);
   formatDate(response.data.dt);
+  callForecastURL(latitude, longitude);
 }
 
 function showCity(city) {
