@@ -23,8 +23,17 @@ function formatDate(timestamp) {
     "#update-time"
   ).innerHTML = `${day} ${hour}:${minutes}`;
 }
-function showForecast(response) {
-  console.log(response);
+function showForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = date.getDay();
+  let weekday = days[day];
+  console.log(weekday);
+  document.querySelector("#weekday-forecast").innerHTML = weekday;
+  createForecast();
+}
+
+function showForecast(response, weekday) {
   document.querySelector("#forecast-max-temp").innerHTML = Math.round(
     response.data.daily[1].temp.max
   );
@@ -33,7 +42,9 @@ function showForecast(response) {
   );
   let iconNameForecast = response.data.daily[1].weather[0].icon;
   let iconNameAlt = response.data.daily[1].weather[0].icon;
+  let forecastDay = response.data.daily[1].dt;
   changeIconName(iconNameForecast, iconNameAlt);
+  showForecastDay(forecastDay);
 }
 
 function callForecastURL(lat, lon) {
