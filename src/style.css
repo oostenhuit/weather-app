@@ -105,6 +105,8 @@ button {
 .icon-forecast {
   width: 54px;
   height: 54px;
+  position: relative;
+  top: -10px;
 }
 .endnote {
   font-size: 12px;
