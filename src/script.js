@@ -23,27 +23,47 @@ function formatDate(timestamp) {
     "#update-time"
   ).innerHTML = `${day} ${hour}:${minutes}`;
 }
+
 function showForecastDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = date.getDay();
   let weekday = days[day];
   console.log(weekday);
-  document.querySelector("#weekday-forecast").innerHTML = weekday;
-  createForecast();
+  // document.querySelector("#weekday-forecast").innerHTML = weekday;
+  let forecastElement = document.querySelector("#forecast-template");
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (days[day], index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-4 col-sm-2 forecast">
+        <div id="weekday-forecast" class="weekday">${day}</div>
+        <img src="images/frame.svg" alt="frame" class="frame"/>
+        <div class="forecast-ul">
+          <div><img id="icon-forecast" class="icon-forecast" src="" alt=""></div>
+          <div><strong id="forecast-max-temp"></strong>°</div>
+          <div><span id="forecast-min-temp"></span>°</div>
+       </div>
+      </div>`;
+    } else {
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
-function showForecast(response, weekday) {
-  document.querySelector("#forecast-max-temp").innerHTML = Math.round(
-    response.data.daily[1].temp.max
-  );
-  document.querySelector("#forecast-min-temp").innerHTML = Math.round(
-    response.data.daily[1].temp.min
-  );
-  let iconNameForecast = response.data.daily[1].weather[0].icon;
-  let iconNameAlt = response.data.daily[1].weather[0].icon;
+function showForecast(response) {
+  // document.querySelector("#forecast-max-temp").innerHTML = Math.round(
+  //   response.data.daily[1].temp.max
+  // );
+  // document.querySelector("#forecast-min-temp").innerHTML = Math.round(
+  //   response.data.daily[1].temp.min
+  // );
+  // let iconNameForecast = response.data.daily[1].weather[0].icon;
+  // let iconNameAlt = response.data.daily[1].weather[0].icon;
   let forecastDay = response.data.daily[1].dt;
-  changeIconName(iconNameForecast, iconNameAlt);
+  // changeIconName(iconNameForecast, iconNameAlt);
   showForecastDay(forecastDay);
 }
 
@@ -59,8 +79,8 @@ function changeIconName(name, alt) {
   iconChange.setAttribute(`src`, `images/${newIconName}.svg`);
   iconChange.setAttribute(`alt`, `${alt}`);
   let iconChangeForecast = document.getElementById("icon-forecast");
-  iconChangeForecast.setAttribute(`src`, `images/${newIconName}.svg`);
-  iconChangeForecast.setAttribute(`alt`, `${alt}`);
+  // iconChangeForecast.setAttribute(`src`, `images/${newIconName}.svg`);
+  // iconChangeForecast.setAttribute(`alt`, `${alt}`);
 }
 
 function showTemperature(response) {
