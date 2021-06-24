@@ -24,26 +24,38 @@ function formatDate(timestamp) {
   ).innerHTML = `${day} ${hour}:${minutes}`;
 }
 
-function showForecastDay(timestamp) {
+function formatForecastDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = date.getDay();
-  let weekday = days[day];
-  console.log(weekday);
-  // document.querySelector("#weekday-forecast").innerHTML = weekday;
+  return days[day];
+}
+
+function showForecast(response) {
+  console.log(response);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast-template");
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (days[day], index) {
+
+  forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
         `<div class="col-4 col-sm-2 forecast">
-        <div id="weekday-forecast" class="weekday">${day}</div>
+        <div id="weekday-forecast" class="weekday">${formatForecastDay(
+          forecastDay.dt
+        )}</div>
         <img src="images/frame.svg" alt="frame" class="frame"/>
         <div class="forecast-ul">
-          <div><img id="icon-forecast" class="icon-forecast" src="" alt=""></div>
-          <div><strong id="forecast-max-temp"></strong>°</div>
-          <div><span id="forecast-min-temp"></span>°</div>
+          <div><img id="icon-forecast" class="icon-forecast" src="images/${
+            forecastDay.weather[0].icon
+          }.svg" alt=${forecastDay.weather[0].description}"></div>
+          <div><strong id="forecast-max-temp">${Math.round(
+            forecastDay.temp.max
+          )}</strong>°</div>
+          <div><span id="forecast-min-temp">${Math.round(
+            forecastDay.temp.min
+          )}</span>°</div>
        </div>
       </div>`;
     } else {
@@ -53,37 +65,17 @@ function showForecastDay(timestamp) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-function showForecast(response) {
-  // document.querySelector("#forecast-max-temp").innerHTML = Math.round(
-  //   response.data.daily[1].temp.max
-  // );
-  // document.querySelector("#forecast-min-temp").innerHTML = Math.round(
-  //   response.data.daily[1].temp.min
-  // );
-  // let iconNameForecast = response.data.daily[1].weather[0].icon;
-  // let iconNameAlt = response.data.daily[1].weather[0].icon;
-  let forecastDay = response.data.daily[1].dt;
-  // changeIconName(iconNameForecast, iconNameAlt);
-  showForecastDay(forecastDay);
-}
-
-function callForecastURL(lat, lon) {
+function getForecastData(coordinates) {
+  let lat = coordinates.lat;
+  let lon = coordinates.lon;
   let apiKey = "a7de365924edf156fe268686a1a61738";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   console.log(apiUrl);
   axios.get(apiUrl).then(showForecast);
 }
-function changeIconName(name, alt) {
-  let newIconName = name.slice(0, 2);
-  let iconChange = document.getElementById("icon");
-  iconChange.setAttribute(`src`, `images/${newIconName}.svg`);
-  iconChange.setAttribute(`alt`, `${alt}`);
-  let iconChangeForecast = document.getElementById("icon-forecast");
-  // iconChangeForecast.setAttribute(`src`, `images/${newIconName}.svg`);
-  // iconChangeForecast.setAttribute(`alt`, `${alt}`);
-}
 
 function showTemperature(response) {
+  console.log(response);
   document.querySelector("h1").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
@@ -101,13 +93,16 @@ function showTemperature(response) {
   document.querySelector("#min-temp").innerHTML = Math.round(
     response.data.main.temp_min
   );
-  let iconName = response.data.weather[0].icon;
-  let iconAlt = response.data.weather[0].description;
-  let latitude = response.data.coord.lat;
-  let longitude = response.data.coord.lon;
-  changeIconName(iconName, iconAlt);
+
+  let iconDisplay = document.querySelector("#icon");
+  iconDisplay.setAttribute(
+    `src`,
+    `images/${response.data.weather[0].icon}.svg`
+  );
+  iconDisplay.setAttribute(`alt`, `response.data.weather[0].description`);
+
   formatDate(response.data.dt);
-  callForecastURL(latitude, longitude);
+  getForecastData(response.data.coord);
 }
 
 function showCity(city) {
