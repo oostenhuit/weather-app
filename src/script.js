@@ -19,9 +19,7 @@ function formatDate(timestamp) {
     minutes = `0${minutes}`;
   }
   let day = weekdays[weekday];
-  document.querySelector(
-    "#update-time"
-  ).innerHTML = `${day} ${hour}:${minutes}`;
+  return `${day} ${hour}:${minutes}`;
 }
 
 function formatForecastDay(timestamp) {
@@ -82,9 +80,10 @@ function showTemperature(response) {
     response.data.main.temp
   );
   document.querySelector("h3").innerHTML = response.data.weather[0].description;
-
+  document.querySelector("#update-time").innerHTML = formatDate(
+    response.data.dt
+  );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-
   document.querySelector("#wind-speed").innerHTML = Math.round(
     response.data.wind.speed * 3.6
   );
@@ -102,7 +101,6 @@ function showTemperature(response) {
   );
   iconDisplay.setAttribute(`alt`, `response.data.weather[0].description`);
 
-  formatDate(response.data.dt);
   getForecastData(response.data.coord);
 }
 
