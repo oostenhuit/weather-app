@@ -13,10 +13,7 @@ h1 {
 }
 h3 {
   font-size: 18px;
-  color: white;
   line-height: 0.8;
-  position: relative;
-  top: -7px;
 }
 
 h2 {
@@ -27,11 +24,8 @@ button {
   border-radius: 50px;
   border: none;
   background-color: #fff;
-  /* box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.075); */
 }
 .wrapper {
-  /* background-color: #babbc0; */
-  /* background-color: #e0e1e6; */
   max-width: 700px;
   text-align: center;
   margin: 20px auto;
@@ -111,6 +105,14 @@ button {
 .endnote {
   font-size: 12px;
   text-align: center;
+  color: black;
+}
+.endnote a {
+  color: #6c757d;
+  text-decoration: none;
+}
+.endnote a:hover {
+  text-decoration: underline;
 }
 
 .background-01d {
