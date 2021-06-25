@@ -29,9 +29,15 @@ function formatForecastDay(timestamp) {
   return days[day];
 }
 
+function changeBackground(iconName) {
+  let backgroundClass = document.getElementById("background-color");
+  if (iconName.includes("n")) {
+    backgroundClass.classList.add(`background-night`);
+  } else backgroundClass.classList.add(`background-${iconName}`);
+}
+
 function showForecast(response) {
   let forecast = response.data.daily;
-  console.log(forecast);
   forecast.shift();
   let forecastElement = document.querySelector("#forecast-template");
   let forecastHTML = `<div class="row">`;
@@ -69,12 +75,16 @@ function getForecastData(coordinates) {
   let lon = coordinates.lon;
   let apiKey = "a7de365924edf156fe268686a1a61738";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(showForecast);
 }
 
 function showTemperature(response) {
-  console.log(response);
+  let backgroundcheck = document.getElementById("background-color");
+  backgroundcheck.removeAttribute("class");
+  backgroundcheck.setAttribute("class", "wrapper");
+  console.log(backgroundcheck);
+  // backgroundcheck.removeAttribute(`class`);
+  console.log(backgroundcheck);
   document.querySelector("h1").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
@@ -102,6 +112,7 @@ function showTemperature(response) {
   iconDisplay.setAttribute(`alt`, `response.data.weather[0].description`);
 
   getForecastData(response.data.coord);
+  changeBackground(response.data.weather[0].icon);
 }
 
 function showCity(city) {

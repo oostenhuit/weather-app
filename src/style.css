@@ -1,6 +1,6 @@
 body {
   font-family: "Raleway", sans-serif;
-  color: #fdfdfd;
+  color: #fff;
 }
 input {
   margin: 16px 0px 0px 16px;
@@ -30,7 +30,7 @@ button {
   /* box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.075); */
 }
 .wrapper {
-  background-color: #babbc0;
+  /* background-color: #babbc0; */
   /* background-color: #e0e1e6; */
   max-width: 700px;
   text-align: center;
@@ -111,4 +111,80 @@ button {
 .endnote {
   font-size: 12px;
   text-align: center;
+}
+
+.background-01d {
+  background: linear-gradient(
+    216deg,
+    rgb(255, 194, 48) 11.2%,
+    rgb(255, 124, 0) 100.2%
+  );
+}
+.background-02d {
+  background: radial-gradient(
+    circle at 80% 20%,
+    rgb(255, 156, 156) 0%,
+    rgb(179, 201, 241) 90%
+  );
+}
+.background-03d {
+  background: linear-gradient(
+    210deg,
+    rgb(167, 220, 225) 11%,
+    rgb(134, 182, 194) 83.9%
+  );
+}
+.background-04d {
+  background: linear-gradient(
+    204deg,
+    rgb(221, 221, 221) 5.5%,
+    rgb(134, 171, 194) 90%
+  );
+}
+.background-09d {
+  background: linear-gradient(
+    61deg,
+    rgb(77 84 144) 3.2%,
+    rgb(137 146 208) 97.6%
+  );
+}
+.background-10d {
+  background: linear-gradient(
+    236deg,
+    rgb(216, 176, 216) 23.9%,
+    rgb(53, 169, 215) 86.5%
+  );
+}
+.background-11d {
+  background: linear-gradient(
+    97deg,
+    rgba(30, 33, 98, 1) 0%,
+    rgba(75, 26, 108, 1) 30%,
+    rgba(163, 71, 139, 1) 71%,
+    rgba(205, 96, 255, 1) 82%,
+    rgba(163, 71, 139, 1) 88%,
+    rgba(75, 26, 108, 1) 108%
+  );
+}
+.background-13d {
+  background: linear-gradient(
+    76.5deg,
+    rgb(129, 252, 255) 0.4%,
+    rgb(255, 175, 207) 49.8%,
+    rgb(255, 208, 153) 98.6%
+  );
+}
+.background-50d {
+  background: linear-gradient(
+    69.9deg,
+    rgb(76, 79, 106) 3.2%,
+    rgb(118, 124, 163) 97.6%
+  );
+}
+.background-night {
+  background: linear-gradient(
+    15deg,
+    rgb(32, 38, 57) 11.4%,
+    rgb(63, 76, 119) 82.2%
+  );
 }
