@@ -82,10 +82,14 @@ function showTemperature(response) {
   let backgroundcheck = document.getElementById("background-color");
   backgroundcheck.removeAttribute("class");
   backgroundcheck.setAttribute("class", "wrapper");
-  console.log(backgroundcheck);
-  // backgroundcheck.removeAttribute(`class`);
-  console.log(backgroundcheck);
-  document.querySelector("h1").innerHTML = response.data.name;
+  let city = response.data.name;
+  let h1Element = document.querySelector("h1");
+  if (city.length > 10) {
+    h1Element.style.fontSize = "26px";
+    h1Element.innerHTML = city;
+  } else {
+    h1Element.innerHTML = city;
+  }
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
   );

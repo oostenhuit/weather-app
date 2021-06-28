@@ -19,6 +19,7 @@ h3 {
 h2 {
   font-size: 120px;
   font-family: "Arimo", sans-serif;
+  text-align: right;
 }
 button {
   border-radius: 50px;
