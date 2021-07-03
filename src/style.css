@@ -26,6 +26,10 @@ button {
   border: none;
   background-color: #fff;
 }
+img {
+  display: block;
+  margin: 0 auto;
+}
 .wrapper {
   max-width: 700px;
   text-align: center;
@@ -57,8 +61,7 @@ button {
   position: relative;
   top: 10px;
   left: 19px;
-  padding: 0px;
-  text-align: left;
+  padding: 0px 0px 15px;
 }
 .celsius {
   position: relative;

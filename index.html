@@ -59,32 +59,33 @@
         </div>
 
         <div class="row">
-          <div class="col-5 col-sm-5">
-            <ul class="climate">
-              <li>Last updated: <span id="update-time"></span> </li>
-              <li>Humidity: <span id="humidity"></span>%</li>
-              <li>Wind: <span id="wind-speed"></span> km/h</li>
-            </ul>
+          <div class="col-12 col-sm-4 order-sm-3">
+            <img class="main-weather-icon" id="icon" src="" alt="">
           </div>
-
-          <div class="col-7 col-sm-3">
+          <div class="col-12 col-sm-3 ps-3 ps-sm-0 order-sm-2">
             <div class="row">
-              <div class="col-8 col-sm-10">
+              <div class="col-5 col-sm-10 offset-3 offset-sm-0 pe-sm-0x">
                 <h2 id="temperature"></h2>
-                <div class="max-min-temp-today">
+                <div class="max-min-temp-today ps-3 ps-sm-0 ">
                   <span><strong><span id="max-temp"></span>°</strong></span>
                   <span>/</span>
                   <span id="min-temp"></span><span>°</span>
                 </div>
               </div>
-              <div class="col-4 col-sm-2">
+              <div class="col-1 col-sm-2 ps-sm-0">
                 <div class="celsius">°C</div>
               </div>
             </div>
           </div>
-          
-          <div class="col-12 col-sm-4">
-            <img class="main-weather-icon" id="icon" src="" alt="">
+
+          <div class="col-11 col-sm-5 order-sm-1">
+            <div class="text-center text-sm-start">
+            <ul class="climate">
+              <li>Last updated: <span id="update-time"></span> </li>
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind-speed"></span> km/h</li>
+            </ul>
+            </div>
           </div>
         </div>
         <!-- forecast -->
