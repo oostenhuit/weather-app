@@ -37,6 +37,7 @@ function changeBackground(iconName) {
 }
 
 function showForecast(response) {
+  console.log(response);
   let forecast = response.data.daily;
   forecast.shift();
   let forecastElement = document.querySelector("#forecast-template");
