@@ -1,6 +1,7 @@
 body {
   font-family: "Raleway", sans-serif;
   color: #fff;
+  background-color: #25527a;
 }
 input {
   margin: 16px 0px 0px 16px;
@@ -11,15 +12,14 @@ h1 {
   padding-top: 10px;
   margin: 0px;
 }
-h3 {
-  font-size: 18px;
-  line-height: 0.8;
-}
-
 h2 {
   font-size: 120px;
   font-family: "Arimo", sans-serif;
   text-align: right;
+}
+h3 {
+  font-size: 18px;
+  line-height: 0.8;
 }
 button {
   border-radius: 50px;
@@ -51,12 +51,9 @@ img {
   left: -5px;
   color: rgb(39, 38, 38);
 }
-.location-search:hover {
-  transition: all 200ms ease-in-out;
-}
-
 .climate {
-  font-size: 17px;
+  font-size: 16px;
+  font-weight: 400;
   list-style: none;
   position: relative;
   top: 10px;
@@ -72,7 +69,6 @@ img {
   line-height: 1.3;
   font-weight: 500;
 }
-
 .max-min-temp-today {
   position: relative;
   top: -29px;
@@ -82,7 +78,6 @@ img {
   width: 144px;
   height: 144px;
 }
-
 .weekday {
   margin: 0px;
   font-size: 18px;
@@ -111,11 +106,13 @@ img {
 .endnote {
   font-size: 12px;
   text-align: center;
-  color: black;
+  color: #fff;
+  font-stretch: 150%;
 }
 .endnote a {
-  color: #6c757d;
   text-decoration: none;
+  color: #fff;
+  opacity: 80%;
 }
 .endnote a:hover {
   text-decoration: underline;

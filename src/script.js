@@ -37,7 +37,6 @@ function changeBackground(iconName) {
 }
 
 function showForecast(response) {
-  console.log(response);
   let forecast = response.data.daily;
   forecast.shift();
   let forecastElement = document.querySelector("#forecast-template");
@@ -85,10 +84,11 @@ function showTemperature(response) {
   backgroundcheck.setAttribute("class", "wrapper");
   let city = response.data.name;
   let h1Element = document.querySelector("h1");
-  if (city.length > 10) {
+  if (city.length >= 10) {
     h1Element.style.fontSize = "26px";
     h1Element.innerHTML = city;
   } else {
+    h1Element.style.fontSize = "36px";
     h1Element.innerHTML = city;
   }
   document.querySelector("#temperature").innerHTML = Math.round(
@@ -131,10 +131,7 @@ function getData(event) {
   let city = document.querySelector("#input-value").value;
   showCity(city);
 }
-let searchButton = document.querySelector("#search-form");
-searchButton.addEventListener("submit", getData);
 
-// by location
 function showPositionData(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -146,8 +143,10 @@ function getLocationData(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPositionData);
 }
+
+let searchButton = document.querySelector("#search-form");
+searchButton.addEventListener("submit", getData);
 let locationButton = document.querySelector("#location-button");
 locationButton.addEventListener("click", getLocationData);
 
-// default
 showCity("Berlin");
